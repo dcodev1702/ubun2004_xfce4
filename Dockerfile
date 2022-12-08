@@ -4,7 +4,7 @@ LABEL maintainer="Inspired from: YouTube - https://www.youtube.com/@NovaspiritTe
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update -y && apt install -y -q build-essential python3-pip python3-dev net-tools git sudo xfce4 faenza-icon-theme bash xfce4-terminal firefox tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer vim file tmux openssh-server mlocate \
+RUN apt update -y && apt install -y -q build-essential aufs-tools automake curl python3-pip python3-dev net-tools git sudo xfce4 faenza-icon-theme bash xfce4-terminal firefox tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer vim file tmux openssh-server mlocate \
     && python3 -m pip install --upgrade pip \
     && python3 -m pip install -U setuptools wheel \
     && addgroup --gid 1000 ubuntu \
@@ -16,7 +16,7 @@ RUN apt update -y && apt install -y -q build-essential python3-pip python3-dev n
     && echo "sudo ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers \
     && git clone https://github.com/novnc/noVNC /opt/noVNC \
     && git clone https://github.com/novnc/websockify /opt/noVNC/utils/websockify \
-    && ssh-keygen -A 
+    && ssh-keygen -A && apt clean autoclean && apt autoremove -y && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 
 USER ubuntu
