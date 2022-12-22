@@ -10,7 +10,7 @@ An Ubuntu 20.04 XFCE 4 Container that can be accessed via VNC
     mkdir data
     
 # Run Docker container:
-    docker run -d --rm --name ubun_xfce4 --user 1000 -v $(pwd)/data:/home/ubuntu/data -p 6080:6080 ubun2004_xfce4
+    docker run -d --rm --name ubun_xfce4 --user 1000 -v $(pwd)/data:/home/ubuntu/data -p 2222:22 -p 6080:6080 ubun2004_xfce4
 
 # Go to your web browser:
     + LAN_IP:6080/vnc.html
