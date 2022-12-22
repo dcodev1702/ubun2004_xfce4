@@ -35,6 +35,8 @@ RUN mkdir -p /home/ubuntu/.vnc \
     && echo -e "#!/bin/bash\nstartxfce4 &" > /home/ubuntu/.vnc/xstartup \
     && printf "password\npassword\n\n" | vncpasswd
 
+EXPOSE 6080
+EXPOSE 22
 
 COPY entry.sh /entry.sh
 CMD [ "/bin/bash","/entry.sh" ]
